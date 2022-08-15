@@ -1,0 +1,19 @@
+name: First CI
+
+on: push
+
+jobs:
+  job1:
+    name: First job
+    runs_on: ubuntu-latest
+  job2:
+    name: Second job
+    runs_on: ubuntu-latest
+    steps:
+      - name: Step one
+        uses: actions/checkout@v2
+      - name: Step two
+        run: |
+          pwd
+          env | sort
+
