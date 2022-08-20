@@ -1,4 +1,4 @@
-name: Challenge CI
+name: ChallengeCI
 
 on: push
 
