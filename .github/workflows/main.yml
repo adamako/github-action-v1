@@ -1,16 +1,23 @@
-name: First CI
+name: Challenge CI
 
 on: push
 
 jobs:
-  job1:
-    name: Frst job
+  build:
+    name: Build go app
     runs-on: ubuntu-latest
+    env:
+      FILE_NAME: hello-world
     steps:
-      - name: Step one
+      - name: Checkout code
         uses: actions/checkout@v2
-      - name: Step two
+      - name: Build
         run: |
-          pwd
-          env | sort
+          go build ${{ env.FILE_NAME }}.go
+      - name: Upload the artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: linux
+          path: ./${{ env.FILE_NAME }}
+
 
