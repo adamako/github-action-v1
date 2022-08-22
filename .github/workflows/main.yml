@@ -3,21 +3,23 @@ name: ChallengeCI
 on: push
 
 jobs:
-  build:
-    name: Build go app
+  Test:
+    name: Run python script
     runs-on: ubuntu-latest
-    env:
-      FILE_NAME: hello-world
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build
+      - name: Run script
         run: |
-          go build ${{ env.FILE_NAME }}.go
-      - name: Upload the artifact
+          python hello-world.py
+  Build:
+    name: hello world artifact
+    runs-on: ubuntu-latest
+    env:
+      ARTIFACT_NAME: hello-world
+    steps:
+      - name: Upload python artifact
         uses: actions/upload-artifact@v1.0.0
         with:
           name: linux
-          path: ./${{ env.FILE_NAME }}
-
-
+          path: ./hello-world.py
