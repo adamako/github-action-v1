@@ -1,8 +1,9 @@
 name: keyword-releaser
 
-on: feature/test-release
+on: push
 
 jobs:
+  
   Release:
     name: Test a release
     runs-on: ubuntu-latest
